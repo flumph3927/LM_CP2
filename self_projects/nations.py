@@ -1,7 +1,7 @@
 import random
 
-z=35
-y=25
+z=45
+y=30
 mp=[]
 for i in range(y):
     mp.append([])
@@ -12,7 +12,7 @@ dne=False
 while not dne:
     tle=[random.randint(0,(y-1)),random.randint(0,(z-1))]
     if mp[tle[0]][tle[1]]=='':
-        ps=['~','~','~','~','~','~','-','^','+','&','%','!','*']
+        ps=['~','#']
         for j in [[tle[0],tle[1]+1],[tle[0]-1,tle[1]],[tle[0]+1,tle[1]],[tle[0],tle[1]-1]]:
             if j[0]<(y-1) and j[0]>-1 and j[1]>-1 and j[1]<(z-1):
                 if mp[j[0]][j[1]] != '':
@@ -25,6 +25,53 @@ while not dne:
             if x == '':
                 dne=False
 
+for i in range(100):
+    dne=False
+    while not dne:
+        for i in range(y):
+            for x in range(z):
+                tle=[i,x]
+                ps=[]
+                for j in [[tle[0],tle[1]+1],[tle[0]-1,tle[1]],[tle[0]+1,tle[1]],[tle[0],tle[1]-1]]:
+                    if not j[0]<y:
+                        j[0]-=y
+                    if not j[1]<z:
+                        j[1]-=z
+                    for a in range(10):
+                        ps.append(mp[j[0]][j[1]])
+                for b in range(100):
+                    ps.append(mp[i][x])
+                mp[tle[0]][tle[1]]=random.choice(ps)
+        dne=True
+        for i in mp:
+            for x in i:
+                if x == '':
+                    dne=False
+
+for i in range(1):
+    dne=False
+    while not dne:
+        for i in range(y):
+            for x in range(z):
+                if mp[i][x]!='~':
+                    tle=[i,x]
+                    ps=['-','^','+','&','%','!','*']
+                    for j in [[tle[0],tle[1]+1],[tle[0]-1,tle[1]],[tle[0]+1,tle[1]],[tle[0],tle[1]-1]]:
+                        if not j[0]<y:
+                            j[0]-=y
+                        if not j[1]<z:
+                            j[1]-=z
+                        for a in range(100):
+                            if mp[j[0]][j[1]] not in ['~','#']:
+                                ps.append(mp[j[0]][j[1]])
+                    for b in range(100):
+                        ps.append(mp[i][x])
+                    mp[tle[0]][tle[1]]=random.choice(ps)
+        dne=True
+        for i in mp:
+            for x in i:
+                if x == '#':
+                    dne=False
 
 for i in range(1500):
     dne=False
@@ -53,7 +100,7 @@ for i in range(1500):
 
     mappp=''
     mapp=''
-    cds={'~':'\033[104m','-':'\033[43m','^':'\033[1m\033[47m','+':'\033[102m','&':'\33[45m','%':'\33[40m','!':'\33[41m','*':'\33[46m'}
+    cds={'~':'\033[104m','-':'\033[43m','^':'\033[1m\033[47m','+':'\033[102m','&':'\33[45m','%':'\33[40m','!':'\33[41m','*':'\33[46m','#':''}
     for i in mp:
         for x in i:
             mapp+=(cds[x]+' '+x+' '+'\033[00m')
