@@ -80,7 +80,6 @@ for i in range(1500):
     while not dne:
         for i in range(y):
             for x in range(z):
-                mp[i][x][1].append(mp[i][x][0]) #FIX THIS  MOVE DOWN
                 if mp[i][x][0]!='~':
                     tle=[i,x]
                     ps=mp[i][x][1]
@@ -95,7 +94,7 @@ for i in range(1500):
                     for b in range(100):
                         ps.append(mp[i][x][0])
                     mp[tle[0]][tle[1]][0]=random.choice(ps)
-                
+                    mp[i][x][1].append(mp[i][x][0])
         dne=True
         for i in mp:
             for x in i:
