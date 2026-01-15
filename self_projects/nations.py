@@ -1,7 +1,7 @@
 import random
 
-z=60
-y=40
+z=50
+y=30
 mp=[]
 for i in range(y):
     mp.append([])
@@ -38,25 +38,25 @@ for i in range(100):
                         j[0]-=y
                     if not j[1]<z:
                         j[1]-=z
-                    for a in range(10):
+                    for a in range(100):
                         ps.append(mp[j[0]][j[1]][0])
-                for b in range(100):
+                for b in range(9):
                     ps.append(mp[i][x][0])
-                mp[tle[0]][tle[1]][0]=random.choice(ps)
+                ps.append(mp[i][x][0])
+                mp[i][x][0]=random.choice(ps)
         dne=True
         for i in mp:
             for x in i:
                 if x[0] == '':
                     dne=False
 
-for i in range(1):
+for rps in range(10):
     dne=False
     while not dne:
         for i in range(y):
             for x in range(z):
                 if mp[i][x][0]!='~':
                     tle=[i,x]
-                    mp[i][x].append(['-','^','+','&','%','!','*'])
                     ps=['-','^','+','&','%','!','*']
                     for j in [[tle[0],tle[1]+1],[tle[0]-1,tle[1]],[tle[0]+1,tle[1]],[tle[0],tle[1]-1]]:
                         if not j[0]<y:
@@ -66,35 +66,46 @@ for i in range(1):
                         for a in range(100):
                             if mp[j[0]][j[1]][0] not in ['~','#']:
                                 ps.append(mp[j[0]][j[1]][0])
-                    for b in range(100):
+                    for b in range(1):
                         ps.append(mp[i][x][0])
-                    mp[tle[0]][tle[1]][0]=random.choice(ps)
+                    rnd=random.choice(ps)
+                    mp[tle[0]][tle[1]][0]=rnd
         dne=True
         for i in mp:
             for x in i:
                 if x[0] == '#':
                     dne=False
 
+m2=0
 for i in range(1500):
+    m2+=1
     dne=False
     while not dne:
         for i in range(y):
             for x in range(z):
                 if mp[i][x][0]!='~':
                     tle=[i,x]
-                    ps=mp[i][x][1]
+                    ps=[]
                     for j in [[tle[0],tle[1]+1],[tle[0]-1,tle[1]],[tle[0]+1,tle[1]],[tle[0],tle[1]-1]]:
                         if not j[0]<y:
                             j[0]-=y
                         if not j[1]<z:
                             j[1]-=z
-                        for a in range(100):
+                        for a in range(60):
                             if mp[j[0]][j[1]][0]!='~':
                                 ps.append(mp[j[0]][j[1]][0])
-                    for b in range(100):
-                        ps.append(mp[i][x][0])
                     mp[tle[0]][tle[1]][0]=random.choice(ps)
-                    mp[i][x][1].append(mp[i][x][0])
+                    for l in ['-','^','+','&','%','!','*']:
+                        srr=0
+                        for j in [[tle[0],tle[1]+1],[tle[0]-1,tle[1]],[tle[0]+1,tle[1]],[tle[0],tle[1]-1]]:
+                            if not j[0]<y:
+                                j[0]-=y
+                            if not j[1]<z:
+                                j[1]-=z
+                            if mp[j[0]][j[1]][0]==l:
+                                srr+=1
+                        if srr>=3 and random.randint(0,10)==9:
+                            mp[i][x][0]=l
         dne=True
         for i in mp:
             for x in i:
