@@ -3,42 +3,42 @@
 #define add, getting LIB
 def add(lib):
     #set TTL to user input for title
-    ttl=input('What is the title of the book you would like to add? ')
+    title=input('What is the title of the book you would like to add? ')
     #set ATHR to user input for author
-    athr=input('What is the author of the book you would like to add? ')
+    author=input('What is the author of the book you would like to add? ')
     #add list first TTL, second ATHR to LIB
-    lib.append([ttl,athr])
+    lib.append((title,author))
     #return LIB
     return lib
 
 #define srch, getting LIB
-def srch(lib):
-    nne=True
-    chce=input('1. Seach by title\n2. Search by author\n')
-    while chce not in ('1','2'):
+def search(lib):
+    none=True
+    choice=input('1. Seach by title\n2. Search by author\n')
+    while choice not in ('1','2'):
         print('Invalid input. Try again.')
-        chce=input('1. Seach by title\n2. Search by author\n')
+        choice=input('1. Seach by title\n2. Search by author\n')
     #if user wants to search by title:
-    if chce=='1':
+    if choice=='1':
         #set TRM to user input title
-        trm=input('Title: ').lower()
+        term=input('Title: ').lower()
         #loop through LIB as BOOK
         for book in lib:
             #if TRM in first item of BOOK, display first and second items in BOOK
-            if trm in book[0].lower():
+            if term in book[0].lower():
                 print(f'{book[0]} by {book[1]}')
-                nne=False
+                none=False
     #Else if user wants to search by author:
     else:
         #set TRM to user input author
-        trm=input('Author: ').lower()
+        term=input('Author: ').lower()
         #loop through LIB as BOOK
         for book in lib:
             #if TRM in second item of BOOK, display first and second items in BOOK
-            if trm in book[1].lower():
+            if term in book[1].lower():
                 print(f'{book[0]} by {book[1]}')
-                nne=False
-    if nne: print('No results found.')
+                none=False
+    if none: print('No results found.')
 
 
 #define view, getting LIB
@@ -115,7 +115,7 @@ def main():
         elif opt=='1':
             view(library)
         elif opt=='2':
-            srch(library)
+            search(library)
         elif opt=='3':
             add(library)
         elif opt=='4':
