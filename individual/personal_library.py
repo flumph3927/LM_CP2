@@ -51,28 +51,28 @@ def view(lib):
         print('Your library is empty.')
 
 #define rmv, getting LIB
-def rmv(lib):
-    chce=input('1. Seach by title\n2. Search by author\n')
-    while chce not in ('1','2'):
+def remove(lib):
+    choice=input('1. Seach by title\n2. Search by author\n')
+    while choice not in ('1','2'):
         print('Invalid input. Try again.')
-        chce=input('1. Seach by title\n2. Search by author\n')
+        choice=input('1. Seach by title\n2. Search by author\n')
     #if user wants to search by title:
-    if chce=='1':
+    if choice=='1':
         none=True
         #set TRM to user input title
-        trm=input('Title: ').lower()
+        term=input('Title: ').lower()
         #loop through LIB as BOOK
         for book in lib:
             #if TRM in first item of BOOK, display first and second items in BOOK
-            if trm in book[0].lower():
+            if term in book[0].lower():
                 print(f'{book[0]} by {book[1]}')
                 none=False
-                chce=input('Do you want to remove this book? (y/n) ').lower()
-                while chce not in ('y','n'):
+                choice=input('Do you want to remove this book? (y/n) ').lower()
+                while choice not in ('y','n'):
                     print('Invalid input. Try again.')
-                    chce=input('Do you want to remove this book? (y/n) ').lower()
+                    choice=input('Do you want to remove this book? (y/n) ').lower()
                 #if user wants to remove BOOK
-                if chce=='y':
+                if choice=='y':
                     #remove BOOK from LIB
                     lib.remove(book)
         if none: print('Nothing found.')
@@ -80,19 +80,19 @@ def rmv(lib):
     else:
         none=True     
         #set TRM to user input author
-        trm=input('Author: ').lower()
+        term=input('Author: ').lower()
         #loop through LIB as BOOK
         for book in lib:
             #if TRM in first item of BOOK, display first and second items in BOOK
-            if trm in book[1].lower():
+            if term in book[1].lower():
                 print(f'{book[0]} by {book[1]}')
                 none=False
-                chce=input('Do you want to remove this book? (y/n) ').lower()
-                while chce not in ('y','n'):
+                choice=input('Do you want to remove this book? (y/n) ').lower()
+                while choice not in ('y','n'):
                     print('Invalid input. Try again.')
-                    chce=input('Do you want to remove this book? (y/n) ').lower()
+                    choice=input('Do you want to remove this book? (y/n) ').lower()
                 #if user wants to remove BOOK
-                if chce=='y':
+                if choice=='y':
                     #remove BOOK from LIB
                     lib.remove(book)
         if none: print('Nothing found.')
@@ -104,22 +104,22 @@ def main():
     #loop
     while True:
         #get user input on which option(view,search,add,remove,exit)
-        opt=input('1. View\n2. Search\n3. Add\n4. Remove\n5. Exit\n')
-        while opt not in ('1','2','3','4','5'):
+        option=input('1. View\n2. Search\n3. Add\n4. Remove\n5. Exit\n')
+        while option not in ('1','2','3','4','5'):
             print('Invalid input. Try again')
-            opt=input('1. View\n2. Search\n3. Add\n4. Remove\n5. Exit\n')
+            option=input('1. View\n2. Search\n3. Add\n4. Remove\n5. Exit\n')
         #if input is exit, break out of loop
-        if opt=='5':
+        if option=='5':
             break
         #else, run appropriate function
-        elif opt=='1':
+        elif option=='1':
             view(library)
-        elif opt=='2':
+        elif option=='2':
             search(library)
-        elif opt=='3':
+        elif option=='3':
             add(library)
-        elif opt=='4':
-            rmv(library)
+        elif option=='4':
+            remove(library)
 
 #run main function
 main()
