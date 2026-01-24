@@ -1,47 +1,14 @@
 #LM 1st random password generator
 import string, random
 
-#create function uppercase, get AMOUNT
-def uppercase(amount):
+#create function get_chars, get AMOUNT and choices list
+def get_chars(amount,sett):
     #set OUT to empty list
     out=[]
     #loop AMOUNT times
     for i in range(amount):
-        #add randomly chosen uppercase number to OUT
-        out.append(random.choice(string.ascii_uppercase))
-    #return OUT
-    return out
-
-#create function lowercase, get AMOUNT
-def lowercase(amount):
-    #set OUT to empty list
-    out=[]
-    #loop AMOUNT times
-    for i in range(amount):
-        #add randomly chosen lowercase number to OUT
-        out.append(random.choice(string.ascii_lowercase))
-    #return OUT
-    return out
-
-#create function number, get AMOUNT
-def numbers(amount):
-    #set OUT to empty list
-    out=[]
-    #loop AMOUNT times
-    for i in range(amount):
-        #add randomly chosen number to OUT
-        out.append(random.choice(string.digits))
-    #return OUT
-    return out
-
-#create function special, get AMOUNT
-def special(amount):
-    #set OUT to empty list
-    out=[]
-    #loop amount times
-    for i in range(amount):
-        #add randomly chosen special character to OUT
-        out.append(random.choice(string.punctuation))
+        #add randomly chosen character to OUT
+        out.append(random.choice(sett))
     #return OUT
     return out
 
@@ -70,10 +37,10 @@ def distribute(length, chosen):
         options[x]+=1
     #run functions on number in corresponding dictionary value
     out=[]
-    out+=uppercase(options['up'])
-    out+=lowercase(options['low'])
-    out+=numbers(options['num'])
-    out+=special(options['punc'])
+    out+=get_chars(options['up'],string.ascii_uppercase)
+    out+=get_chars(options['low'],string.ascii_lowercase)
+    out+=get_chars(options['num'],string.digits)
+    out+=get_chars(options['punc'],string.punctuation)
     return out
 
 #create function main
