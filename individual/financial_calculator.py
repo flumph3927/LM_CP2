@@ -1,4 +1,4 @@
-#LM 2nd Financial Calculator
+#LM 1st Financial Calculator
 
 #Create function savings
 def savings():

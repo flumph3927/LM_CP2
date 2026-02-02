@@ -132,11 +132,12 @@ for loops in range(1500):
         mapp+='\n'
     print(mapp,end='\n')
 
+    pmp=mp
     if loops in [0,100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1499]:
-        mps.append(mp)
+        mps.append(pmp)
 
 for i in range(int(y/5)):
-    print('\n\n\n\n')
+    print('\n\n\n\n\n')
 cds={'~':'\033[104m','-':'\033[43m','^':'\033[1m\033[47m','+':'\033[102m','&':'\33[45m','%':'\33[40m','!':'\33[41m','*':'\33[46m','#':''}
 for smr in mps:
     mapp=''
