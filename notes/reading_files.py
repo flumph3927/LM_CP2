@@ -29,7 +29,7 @@ try:
         rows=[]
         for i in content:
             print(f'{i[0]}: {i[1]}')
-            rows.append({headers[0]:i[0],headers[1]:i:[1]})
+            rows.append({headers[0]:i[0],headers[1]:i[1]})
 except:
     print('problems')
 else:
