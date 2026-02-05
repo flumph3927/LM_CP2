@@ -2,9 +2,18 @@
 import csv
 
 #create function display movie, get MOVIE
-def display_movie(movie):
+def display_movie(movies):
+    while True:
+    #ask user for title of movie to view
+        title=input('What is the full title of the movie?').lower()
+    #find movie with that title
     #display movie informtion cleaned up
-    print(f'Title: {movie[0]}. Director: {movie[1]}. Genre: {movie[2]}. Rating: {movie[3]}. Length: {movie[4]} minutes. Notable Actors: {movie[5]}.')
+    print(f'\nTitle: {movie[0]}. \nDirector: {movie[1]}. \nGenre: {movie[2]}. \nRating: {movie[3]}. \nLength: {movie[4]} minutes. \nNotable Actors: {movie[5]}.')
+
+#create function show simple, get MOVIE
+def show_simple(movie):
+    #display simple movie information cleaned up
+    print(f'Title: {movie[0]}. Genre: {movie[2]}. Rating: {movie[3]}.')
 
 #create function setup, get PATH
 def setup(path):
@@ -27,7 +36,7 @@ def show_all(all):
     #loop through ALL as MOVIE
     for movie in all:
         #call function display movie on MOVIE
-        display_movie(movie)
+        show_simple(movie)
 
 #create function all but length, get POSS and TYP
 def all_but_length(poss,typ):
@@ -40,7 +49,7 @@ def all_but_length(poss,typ):
         #if any of MOVIE accessed at TYP are TERM
         if term in movie[typ].lower():
             #add MOVIE to RESULTS
-            results+=movie
+            results.append(movie)
     #return RESULTS
     return results
 
@@ -76,7 +85,7 @@ def movie_length(poss):
     #loop through POSS as MOVIE
     for movie in poss:
         #if MOVIE length is between first and last of LENT
-        if movie[4]<lent[1] and movie[4]>lent[0]:
+        if int(movie[4])<lent[1] and int(movie[4])>lent[0]:
             #add MOVIE to RESULTS
             results.append(movie)
     #return RESULTS
@@ -116,7 +125,7 @@ def main():
     #loop
     while True:
         #ask user if they want to show all, exit, or search
-        choice=input('1. Show all\n2. Search movies\n3. Exit\n')
+        choice=input('\n\n\n\n\n\n\n1. Show all\n2. Search movies\n3. Exit\n')
         while choice not in ['1','2','3',]:
             print('Invalid input. Try again.')
             choice=input('1. Show all\n2. Search movies\n3. Exit\n')
@@ -132,8 +141,10 @@ def main():
             if input('Would you like to search by notable actors?(Y/anything else) ').lower()=='y': pas+='3'
             if input('Would you like to search by length?(Y/anything else) ').lower()=='y': pas+='4'
             #display results (using display movie) of call function get results on PAS and MOVIES
-            for movie in get_results(pas,movies):
-                display_movie(movie)
+            found=get_results(pas,movies)
+            show_all(found)
+            if input('Would you like to view specific movie?(Y/anything else) ').lower=='y':
+                pass
         #if exit, break out of loop
         elif choice=='3':
             break
