@@ -92,7 +92,7 @@ for loops in range(1500):
                             j[0]-=y
                         if not j[1]<z:
                             j[1]-=z
-                        for a in range(60):
+                        for a in range(100):
                             if mp[j[0]][j[1]][0]!='~':
                                 ps.append(mp[j[0]][j[1]][0])
                     if len(ps)!=0:
