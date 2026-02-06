@@ -4,11 +4,19 @@ import csv
 #create function display movie, get MOVIE
 def display_movie(movies):
     while True:
+        end=False
     #ask user for title of movie to view
-        title=input('What is the full title of the movie?').lower()
+        title=input('What is the full title of the movie? ').lower()
     #find movie with that title
+        for movie in movies:
+            if title == movie[0].lower():
     #display movie informtion cleaned up
-    print(f'\nTitle: {movie[0]}. \nDirector: {movie[1]}. \nGenre: {movie[2]}. \nRating: {movie[3]}. \nLength: {movie[4]} minutes. \nNotable Actors: {movie[5]}.')
+                print(f'\nTitle: {movie[0]}. \nDirector: {movie[1]}. \nGenre: {movie[2]}. \nRating: {movie[3]}. \nLength: {movie[4]} minutes. \nNotable Actors: {movie[5]}.')
+                end=True
+        if end:
+            break
+        else:
+            print('There is no movie with that title. Try again.')
 
 #create function show simple, get MOVIE
 def show_simple(movie):
@@ -133,18 +141,21 @@ def main():
         if choice=='1': show_all(movies)
         #if search
         elif choice=='2':
-            #set PAS to empty string
-            pas=''
-            #ask user if they want to do options, add corresonding number string to PAS (for all options)
-            if input('Would you like to search by genre?(Y/anything else) ').lower()=='y': pas+='1'
-            if input('Would you like to search by director?(Y/anything else) ').lower()=='y': pas+='2'
-            if input('Would you like to search by notable actors?(Y/anything else) ').lower()=='y': pas+='3'
-            if input('Would you like to search by length?(Y/anything else) ').lower()=='y': pas+='4'
-            #display results (using display movie) of call function get results on PAS and MOVIES
-            found=get_results(pas,movies)
-            show_all(found)
-            if input('Would you like to view specific movie?(Y/anything else) ').lower=='y':
-                pass
+            while True:
+                #set PAS to empty string
+                pas=''
+                #ask user if they want to do options, add corresonding number string to PAS (for all options)
+                if input('Would you like to search by genre?(Y/anything else) ').lower()=='y': pas+='1'
+                if input('Would you like to search by director?(Y/anything else) ').lower()=='y': pas+='2'
+                if input('Would you like to search by notable actors?(Y/anything else) ').lower()=='y': pas+='3'
+                if input('Would you like to search by length?(Y/anything else) ').lower()=='y': pas+='4'
+                #display results (using display movie) of call function get results on PAS and MOVIES
+                found=get_results(pas,movies)
+                show_all(found)
+                if input('Would you like to view specific movie?(Y/anything else) ').lower()=='y':
+                    display_movie(found)
+                if input('M to return to main menu, anything else to keep searching. ').lower()=='m':
+                    break
         #if exit, break out of loop
         elif choice=='3':
             break
