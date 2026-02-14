@@ -9,7 +9,7 @@ def add(lib):
     author=input('What is the author of the book you would like to add? ')
     while True:
         try:
-            year=int(input('What year was the book you would like to add created? '))
+            year=int(input('What year was the book you would like to add written? '))
             break
         except:
             print('Invalid input. Try again.')
@@ -117,16 +117,23 @@ def remove(lib):
                     #remove BOOK from LIB
                     lib.remove(book)
         if none: print('Nothing found.')
+    return lib
 
 #create function get from, get PATH
 def get_from(path):
     #open file at PATH
     stuff=[]
-    with open(path,mode='r') as lib:
-    #get information form file as list of dictionaries
-        content=csv.DictReader(lib)
-        for i in content:
-            stuff.append(i)
+    try:
+        with open(path,mode='r') as lib:
+        #get information form file as list of dictionaries
+            content=csv.DictReader(lib)
+            for i in content:
+                try:
+                    stuff.append(i)
+                except:
+                    print('Some information malformed. Ignoring malformed information.')
+    except:
+        print('Library file does not exist/cannot be opened. Will create new library.')
     #return information
     return stuff
 
@@ -137,12 +144,13 @@ def save_to(path,lib):
     #save LIB to file at path
         writer=csv.DictWriter(sav,fieldnames=['Title','Author','Year','Genre'])
         writer.writeheader()
-        writer.writerows(lib)
+        if lib!={}:
+            writer.writerows(lib)
 
 #def main
 def main():
     #set LIBRARY to empty list
-    library=get_from('individual\\library_file.csv')
+    library=get_from('individual/update_personal_library/library_file.csv')
     #loop
     while True:
         #get user input on which option(view,search,add,remove,exit)
@@ -152,7 +160,8 @@ def main():
             option=input('1. View\n2. Search\n3. Add\n4. Remove\n5. Exit\n')
         #if input is exit, break out of loop
         if option=='5':
-
+            if input('Would you like to exit without saving?(Y to not save, anything else to save) ').lower()!='y':
+                save_to('individual/update_personal_library/library_file.csv',library)
             break
         #else, run appropriate function
         elif option=='1':
@@ -160,9 +169,9 @@ def main():
         elif option=='2':
             search(library)
         elif option=='3':
-            add(library)
+            library=add(library)
         elif option=='4':
-            remove(library)
+            library=remove(library)
 
 #run main function
 main()
