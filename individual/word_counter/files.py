@@ -15,4 +15,8 @@
     #get user input for line
     #open file to write
     #write line to file
-    
+
+#create function reading, get file path
+    #open file to read
+        #display lines in order
+

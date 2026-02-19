@@ -1,3 +1,6 @@
 #LM 1st Word Counter
 
-#create
+#create function get_time
+    #get timestamp
+    #reformat time
+    #return time
