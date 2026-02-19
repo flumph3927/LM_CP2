@@ -6,8 +6,7 @@
     #split into list of words
     #return length of list of words
 
-#create function add info, get time and file path
-    #get word count with call function get words
+#create function add info, get time and file path, word count
     #open file to write
     #write word count and time to file
 

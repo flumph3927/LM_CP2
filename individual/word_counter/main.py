@@ -11,6 +11,7 @@
         #if user view
             #call reading
         #if user add timestamp, etc.
-            #call function add info on function call get time
+            #display word count using function call get words
+            #call function add info on function call get time and word count
         #if exit
             #break out of loop
