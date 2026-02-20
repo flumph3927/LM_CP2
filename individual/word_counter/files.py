@@ -15,7 +15,7 @@ def get_words(path):
 def add_info(path,time,count):
     #open file to write
     with open(path, 'a') as file:
-        file.write(f'\nWord Count: {count}\nTime: {time}\n')
+        file.write(f'\nWord Count: {count}\nTime: {time}\n\n')
     #write word count and time to file
 
 #create function write line, get file path
@@ -25,7 +25,7 @@ def write_line(path):
     #open file to write
     with open(path, 'a') as file:
     #write line to file
-        file.write(line)
+        file.write(line+'\n')
 
 #create function reading, get file path
 def readin(path):
