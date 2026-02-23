@@ -1,8 +1,8 @@
 import random
 
 mps=[]
-z=60
-y=40
+z=30
+y=20
 mp=[]
 for i in range(y):
     mp.append([])
