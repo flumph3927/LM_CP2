@@ -34,3 +34,8 @@ def readin(path):
         #display lines in order
         content=file.read()
     print(content)
+
+#try to open, if fail, create.
+def tests(path):
+    with open(path, 'a'):
+        pass

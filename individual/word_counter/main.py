@@ -5,6 +5,7 @@ import times, files
 def main():
     #get file path, and pass to all functons later, as user input
     path=input('Enter the exact file path for your document: ')
+    files.tests(path)
     #loop
     while True:
         #ask user if they want to write to document, view, add timestamp/word count, or exit
