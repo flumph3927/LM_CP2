@@ -1,0 +1,6 @@
+        turtle.goto(x+length/4,y+length*1.732/4)
+        generate(depth-1,length/2,total-1)
+        turtle.goto(x-length/4,y-length*1.732/4)
+        generate(depth-1,length/2,total-1)
+        turtle.goto(x+length*3/4,y-length*1.732/4)
+        generate(depth-1,length/2,total-1)
