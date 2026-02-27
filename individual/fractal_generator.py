@@ -13,47 +13,48 @@ def midpoints(x,y,z):
     return out
 
 #create function triangle, get length
-def triangle(length):
+def triangle(t,length):
     #create triangle side lengths length
     for i in range(3):
-        turtle.forward(length)
-        turtle.rt(120)
+        t.forward(length)
+        t.rt(120)
 
 #create function generate, get midpoint coords if needed and depth and length
-def generate(depth,length,total=6):
-    turtle.speed(0)
-    if total==6:
-        for i in range(3):
-            turtle.forward(length)
-            turtle.lt(120)
+def generate(t,depth,length,edge=True):
+    t.speed(0)
     #if depth is one, create triangle and leave
     #create triangle with turtle
-    else:
-        triangle(length)
+    if not edge:
+        triangle(t,length)
     if depth==1:
         return
     #call function generate on midpoint of triangles and depth-1 and length/2
-    x,y=turtle.pos()
-    if total==6:
-        turtle.teleport(x+length/4,y+length*1.732/4)
-        generate(depth-1,length/2,total-1)
+    x,y=t.pos()
+    if edge:
+        for dshdag in range(3):
+            t.forward(length*2)
+            t.lt(120)
+        t.teleport(x+length/4,y+length*1.732/4)
+        generate(t,depth-1,length/2,False)
     else:
-        turtle.teleport(x+length/4,y+length*1.732/4)
-        generate(depth-1,length/2,total-1)
-        turtle.teleport(x-length/4,y-length*1.732/4)
-        generate(depth-1,length/2,total-1)
-        turtle.teleport(x+length*3/4,y-length*1.732/4)
-        generate(depth-1,length/2,total-1)
+        t.teleport(x+length/4,y+length*1.732/4)
+        generate(t,depth-1,length/2,False)
+        t.teleport(x-length/4,y-length*1.732/4)
+        generate(t,depth-1,length/2,False)
+        t.teleport(x+length*3/4,y-length*1.732/4)
+        generate(t,depth-1,length/2,False)
 
+#create function background
 def bckgrnd():
+    #user select background color, change to user select
     choice=input('Choose background color:\n1.red\n2.blue\n3.green\n4.yellow\n5.purple\n6.orange\nAnything else for white\n')
-    if choice==1: turtle.bgcolor('red')
-    elif choice==2: turtle.bgcolor('blue')
-    elif choice==3: turtle.bgcolor('green')
-    elif choice==4: turtle.bgcolor('yellow')
-    elif choice==5: turtle.bgcolor('purple')
-    elif choice==6: turtle.bgcolor('orange')
-    else: turtle.bgcolor('white')
+    if choice=='1': return 'red'
+    elif choice=='2': return 'blue'
+    elif choice=='3': return 'green'
+    elif choice=='4': return 'yellow'
+    elif choice=='5': return 'purple'
+    elif choice=='6': return 'orange'
+    else: return 'white'
 
 #create function koch, get depth and length
     #
@@ -68,10 +69,18 @@ def main():
         while choice not in ['1','2']:choice=input('1. Create Sierpinski Triangle\n2. Exit\n')
         #if create fractal: 
         if choice=='1':
+            t=turtle.Turtle()
+            scrn=turtle.Screen()
+            scrn.clearscreen()
+            scrn.setup(800,600)
             #set background to user input color
-            bckgrnd()
+            scrn.bgcolor(bckgrnd())
             #run function generate on user input depth
             depth=input('File depth(1-6):')
+            while depth not in [str(x+1) for x in range(6)]:
+                print('Invalid input. Try again.')
+                depth=input('File depth(1-6):')
+            generate(t,int(depth),200)
         #if exit: break out of loop
         else: break
 
