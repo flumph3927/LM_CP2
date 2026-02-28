@@ -24,15 +24,16 @@ def generate(t,depth,length,edge=True):
     t.speed(0)
     #if depth is one, create triangle and leave
     #create triangle with turtle
-    if not edge:
-        triangle(t,length)
+
+    triangle(t,length)
     if depth==1:
         return
     #call function generate on midpoint of triangles and depth-1 and length/2
     x,y=t.pos()
     if edge:
-        for dshdag in range(3):
-            t.forward(length*2)
+        t.pendown()
+        for i in range(3):
+            t.forward(length)
             t.lt(120)
         t.teleport(x+length/4,y+length*1.732/4)
         generate(t,depth-1,length/2,False)
