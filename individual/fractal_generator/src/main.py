@@ -22,9 +22,11 @@ def main():
             while depth not in [str(x+1) for x in range(6)]:
                 print('Invalid input. Try again.')
                 depth=input('File depth(1-6):')
+            turtle.tracer(0,0)
             fractals.generate(t,int(depth),200)
+            turtle.update()
             if input('S to save as image: ').lower()=='s':
-                screen_background.save_image()
+                screen_background.save_image(scrn)
         #repeat creat fractal one but for fractal 2
         elif choice=='2':
             t=turtle.Turtle()
@@ -34,13 +36,15 @@ def main():
             #set background to user input color
             scrn.bgcolor(screen_background.bckgrnd())
             #run function generate on user input depth
-            depth=input('File depth(1-6): ')
-            while depth not in [str(x+1) for x in range(6)]:
+            depth=input('File depth(1-5): ')
+            while depth not in [str(x+1) for x in range(5)]:
                 print('Invalid input. Try again.')
                 depth=input('File depth(1-6):')
-            fractals.other_fractal(t,int(depth),200)
+            turtle.tracer(0,0)
+            fractals.other_fractal(t,int(depth)+1,200)
+            turtle.update()
             if input('S to save as image: ').lower()=='s':
-                screen_background.save_image()
+                screen_background.save_image(scrn)
         #if exit: break out of loop
         else: break
 

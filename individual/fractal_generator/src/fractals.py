@@ -31,21 +31,23 @@ def generate(t,depth,length,edge=True):
 
 #create function other fractal, get depth and length
 def other_fractal(t,depth,length,edge=True):
-    t.speed(0.0000000001)
+    t.speed(0)
     t.pendown()
     #if first recursion, move to center
     if edge:
         t.teleport(-100,-100)
     #if depth is one, exit
     if depth==1:
-        t.teleport(-100,100)
-        for i in range(4):
-            t.forward(length)
-            t.rt(90)
         return
     helpers.square(t,length)
     #move to other corenr locations, call 4 times with length/3 and depth-1
     x,y=t.pos()
+    if depth==2:
+        t.teleport(-100,100)
+        for i in range(4):
+            t.forward(200)
+            t.rt(90)
+    t.teleport(x,y)
     other_fractal(t,depth-1,length/3,False)
     t.teleport(x+length*2/3,y)
     other_fractal(t,depth-1,length/3,False)

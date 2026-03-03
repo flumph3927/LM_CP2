@@ -16,7 +16,7 @@ This project creates either a serpinski triangle fractal or an unnamed square fr
 - Serpinski triangle: Generates a serpinski triangle with a depth of between 1 and 6
 - Square fractal: Generates an unnamed square fractal with a depth of between 1 and 6
 - Allows changing the background color of the fractal
-- Allows saving fractals as .eps files, but may not save with background color
+- Allows saving fractals as .eps files, but does not save with background color
 
 ## License information
 ***
