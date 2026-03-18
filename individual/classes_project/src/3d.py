@@ -10,6 +10,9 @@
     #draw method
         #say 3d shapes cannot be drawn
 
+    #info method
+        #show formulas and explanation
+
 
 #create class cylinder
     #initialize, get h, radius
@@ -21,6 +24,9 @@
     #draw method
         #say 3d shapes cannot be drawn
 
+    #info method
+        #show formulas and explanation
+
 
 #create class tetrahedron
     #initialize, get side
@@ -31,3 +37,6 @@
 
     #draw method
         #say 3d shapes cannot be drawn
+
+    #info method
+        #show formulas and explanation
