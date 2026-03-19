@@ -29,16 +29,16 @@ def sort(opt,objects):
     try:
     #if opt is one, return objects reordered by area
         if opt==1:
-            return dict(sorted(objects,key=lambda s: s[1].area))
+            return dict(sorted(objects,key=lambda s: s[1].area,reverse=True))
     #else, return objects reordered by perimeter
         else:
-            return dict(sorted(objects,key=lambda s: s[1].perimeter))
+            return dict(sorted(objects,key=lambda s: s[1].perimeter,reverse=True))
     #for 3d:
     except:
         if opt==1:
-            return dict(sorted(objects,key=lambda s: s[1].volume))
+            return dict(sorted(objects,key=lambda s: s[1].volume,reverse=True))
         else:
-            return dict(sorted(objects,key=lambda s: s[1].surface))
+            return dict(sorted(objects,key=lambda s: s[1].surface,reverse=True))
 
 #create function select, get objects
 def select(objects):
@@ -49,4 +49,10 @@ def select(objects):
     while True:
         try:
             choice=int(input('Which shape would you like to select? '))
-            if choice==
+            if choice in [x+1 for x in range(len(objects))]:
+                break
+            else:
+                int('hi')
+        except:
+            print('Invalid Input. Try again.')
+    return objects.values(choice-1)
