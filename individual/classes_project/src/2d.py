@@ -5,7 +5,7 @@ import turtle, math
 class circ:
     #initialize, get radius and name
     def __init__(self,name):
-        #set diameter, perimiter, radius, area, stretch, rotation, shifts and name
+        #set diameter, perimeter, radius, area, stretch, rotation, shifts and name
         while True:
             try:
                 self.radius=int(input('Radius of the circle: '))
@@ -14,7 +14,7 @@ class circ:
             except:
                 print('Invalid input. Try again.')
         self.diameter=self.radius*2
-        self.perimiter=self.radius*3.14159*2
+        self.perimeter=self.radius*3.14159*2
         self.area=self.radius^2*3.14159
         self.stretch=1
         self.rotation=0
@@ -26,10 +26,15 @@ class circ:
         #display all circle attributes
         return f'''Name: {self.name}
 Type: {self.__class__.__name__}
-Radius: {self.radius}
-Area: {self.area}
-Circumference: {self.perimiter}
-Diameter: {self.diameter}
+Radius: {self.radius*self.stretch}
+Area: {self.area*self.stretch^2}
+Circumference: {self.perimeter*self.stretch}
+Diameter: {self.diameter*self.stretch}
+Transformations: 
+Vertical Shift of {self.shifts[1]}
+Horizontal Shift of {self.shifts[0]}
+Rotation of {self.rotation} degrees counterclockwise
+Scale Factor of {self.stretch}
 '''
 
     #draw method
@@ -46,14 +51,13 @@ Diameter: {self.diameter}
     #info method
     def info():
         #show formulas and explanation
-        print('The formula for a circle\'s area is πr^2, with r being the radius.\n The formula for a circle\'s perimiter, or circumference, is 2πr, with r being the radius.\nThe formula for the diameter of a circle is 2r, with r being the radius.')
-
+        print('The formula for a circle\'s area is πr^2, with r being the radius.\n The formula for a circle\'s perimeter, or circumference, is 2πr, with r being the radius.\nThe formula for the diameter of a circle is 2r, with r being the radius.')
 
 #create class rect
 class rect:
     #initialize, get x, y and name
     def __init__(self,name):
-        #set perimiter, x, y, area, stretch, rotation, shifts and name
+        #set perimeter, x, y, area, stretch, rotation, shifts and name
         while True:
             try:
                 self.x=int(input('Width of the rectangle: '))
@@ -68,7 +72,7 @@ class rect:
                     break
             except:
                 print('Invalid input. Try again.')
-        self.perimiter=self.x*2+self.y*2
+        self.perimeter=self.x*2+self.y*2
         self.area=self.x*self.y
         self.stretch=1
         self.rotation=0
@@ -80,10 +84,15 @@ class rect:
         #display all rect attributes
         return f'''Name: {self.name}
 Type: {self.__class__.__name__}
-Width: {self.x}
-Height: {self.y}
-Area: {self.area}
-Perimeter: {self.perimiter}
+Width: {self.x*self.stretch}
+Height: {self.y*self.stretch}
+Area: {self.area*self.stretch^2}
+Perimeter: {self.perimeter*self.stretch}
+Transformations: 
+Vertical Shift of {self.shifts[1]}
+Horizontal Shift of {self.shifts[0]}
+Rotation of {self.rotation} degrees counterclockwise
+Scale Factor of {self.stretch}
 '''
 
     #draw method
@@ -104,14 +113,14 @@ Perimeter: {self.perimiter}
     #info method
     def info():
         #show formulas and explanation
-        print('The formula for the area of a rectangle is lw, with l being lenth and w being width.\nThe formula for the perimiter of a rectangle is 2(l+w), with l being length and w  being width.')
+        print('The formula for the area of a rectangle is lw, with l being lenth and w being width.\nThe formula for the perimeter of a rectangle is 2(l+w), with l being length and w  being width.')
 
 
 #create class tri
 class tri:
     #initialize, get b, h and name
     def __init__(self,name):
-        #set perimiter, base, height, area, stretch, rotation, shifts and namewhile True:
+        #set perimeter, base, height, area, stretch, rotation, shifts and namewhile True:
         while True:
             try:
                 self.a=int(input('Side A of the triangle: '))
@@ -133,8 +142,8 @@ class tri:
                     break
             except:
                 print('Invalid input. Try again.')
-        self.perimiter=self.a+self.b+self.c
-        semi=self.perimiter/2
+        self.perimeter=self.a+self.b+self.c
+        semi=self.perimeter/2
         self.area=math.sqrt(semi(semi-self.a)(semi-self.b)(semi-self.c))
         self.stretch=1
         self.rotation=0
@@ -146,11 +155,16 @@ class tri:
         #display all triangle attributes
         return f'''Name: {self.name}
 Type: {self.__class__.__name__}
-Side A: {self.a}
-Side B: {self.b}
-Side C: {self.c}
-Area: {self.area}
-Perimeter: {self.perimiter}
+Side A: {self.a*self.stretch}
+Side B: {self.b*self.stretch}
+Side C: {self.c*self.stretch}
+Area: {self.area*self.stretch^2}
+Perimeter: {self.perimeter*self.stretch}
+Transformations: 
+Vertical Shift of {self.shifts[1]}
+Horizontal Shift of {self.shifts[0]}
+Rotation of {self.rotation} degrees counterclockwise
+Scale Factor of {self.stretch}
 '''
 
     #draw method
@@ -170,9 +184,6 @@ Perimeter: {self.perimiter}
         turtle.done()
 
     #info method
+    def info():
         #show formulas and explanation
-
-
-#create class square, subclass of rectangle
-    #intialize, get sides
-        #initialize class rect with same side lengths
+        print('The formula for the perimiter of a triangle give side lengths is a+b+c, where a, b, and c are side lengths.\nThe formula for the area of a triangle given side lengths is Heron\'s Formula, which states area = (s(s-a)(s-b)(s-c))^(1/2), where a, b, and c are side lengths and s is half of the perimeter.')
