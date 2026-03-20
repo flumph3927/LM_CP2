@@ -1,8 +1,20 @@
 #comparison functions file
 
+#create function view shapes, get shapes
+def view(shapes):
+    #loop through shapes
+    for i,v in enumerate(shapes):
+    #display shapes with assosciated number
+        print(f'{i+1}: {v[1]}\n\n')
+
 #create function choice, get opt and objedcts
-def choice(opt,objects):
+def choice(objects):
     #if opt is one, return  object with larger area
+    opt=input('1. Compare area/volume\n2. Compare perimiter/surface area\n')
+    while opt not in ['1','2']:
+        print('Invalid Input. Try Again.')
+        opt=input('1. Compare area/volume\n2. Compare perimiter/surface area\n')
+    opt=int(opt)
     try:
         if opt==1:
             if objects[0].area>objects[1].area:
@@ -25,7 +37,12 @@ def choice(opt,objects):
             else:return objects[1]
 
 #create function sort, get opt, objects
-def sort(opt,objects):
+def sort(objects):
+    opt=input('1. Sort by area/volume\n2. Sort by perimiter/surface area\n')
+    while opt not in ['1','2']:
+        print('Invalid Input. Try Again.')
+        opt=input('1. Sort by area/volume\n2. Sort by perimiter/surface area\n')
+    opt=int(opt)
     try:
     #if opt is one, return objects reordered by area
         if opt==1:
@@ -43,8 +60,7 @@ def sort(opt,objects):
 #create function select, get objects
 def select(objects):
     #loop through and show all objects
-    for i,v in enumerate(objects):
-        print(f'{i+1}: {v[1]}\n\n')
+    view(objects)
     #return selected object
     while True:
         try:

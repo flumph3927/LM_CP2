@@ -17,7 +17,7 @@ def main():
             nme=input('What are you naming this shape(will replace previous shapes of the same name): ')
             #get type of shape
             typ=input('What type of shape are you generating:\n1. Circle\n2. Rectangle\n3. Triangle\n4. Cube\n5. Cylinder\n6. Tetrahedron\n')
-            while type not in [str(x+1) for x in range(6)]:
+            while typ not in [str(x+1) for x in range(6)]:
                 print('Invalid Input. Try Again.')
                 typ=input('What type of shape are you generating:\n1. Circle\n2. Rectangle\n3. Triangle\n4. Cube\n5. Cylinder\n6. Tetrahedron\n')
             #create appropriate object
@@ -30,20 +30,51 @@ def main():
         #elif view shapes:
         elif choic=='2':
             #loop through shape dict and display
+            relations.view(shapes)
+        #elif draw shape:
+        elif choic=='3':
+            #choose then draw shape
+            relations.select(shapes).draw()
         #elif transform shape:
-            #run function select shape
-            #get modification, run appropriate function in transform
+        elif choic=='4':
+            #run function transforms
+            shap=relations.select(shapes)
+            shape=transform.transforms(shap)
+            shapes[list(shap.keys())[0]]=shape
         #elif compare shape:
+        elif choic=='5':
             #run function select shape
+            shap=relations.select(shapes)
             #run function select shape on shapes of the same dimensions as the first shape
+            same={}
+            for i,v in shapes.items():
+                if v.typ==shap.typ:
+                    same[i]=v
+            also=relations.select(same)
             #get comparison type, run choice function in compare
             #display results
+            print(f'{relations.choice([same,shap]).name} has a larger value in the selected field.')
         #elif sort 2d shapes:
+        elif choic=='6':
             #run sort function on all 2d shapes
+            same={}
+            for i,v in shapes.items():
+                if v.typ==2:
+                    same[i]=v
             #show results
+            relations.view(relations.sort(same))
         #elif sort 3d shapes:
+        elif choic=='7':
             #run sort function on all 3d shapes
+            same={}
+            for i,v in shapes.items():
+                if v.typ==3:
+                    same[i]=v
             #show results
+            relations.view(relations.sort(same))
         #else:
+        else:
             #break out of loop
+            break
 
+main()
