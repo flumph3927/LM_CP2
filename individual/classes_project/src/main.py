@@ -1,5 +1,5 @@
 #LM 1st geometry calculator
-import two_d, individual.classes_project.src.tre_d as tre_d, relations, transform
+import two_d, tre_d, relations, transform
 
 #create function main
 def main():
