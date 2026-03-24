@@ -21,12 +21,12 @@ def main():
                 print('Invalid Input. Try Again.')
                 typ=input('What type of shape are you generating:\n1. Circle\n2. Rectangle\n3. Triangle\n4. Cube\n5. Cylinder\n6. Tetrahedron\n')
             #create appropriate object
-            if typ==f'1': shapes[nme]=two_d.circ(nme)
-            elif typ=='2':shapes[nme]=two_d.rect(nme)
-            elif typ=='3': shapes[nme]=two_d.tri(nme)
-            elif typ=='4':shapes[nme]=tre_d.cube(nme)
-            elif typ=='5': shapes[nme]=tre_d.cyl(nme)
-            if typ=='6': shapes[nme]=tre_d.tetra(nme)
+            if typ==f'1': shapes[nme]=two_d.Circ(nme)
+            elif typ=='2':shapes[nme]=two_d.Rect(nme)
+            elif typ=='3': shapes[nme]=two_d.Tri(nme)
+            elif typ=='4':shapes[nme]=tre_d.Cube(nme)
+            elif typ=='5': shapes[nme]=tre_d.Cyl(nme)
+            if typ=='6': shapes[nme]=tre_d.Tetra(nme)
         #elif view shapes:
         elif choic=='2':
             #loop through shape dict and display
@@ -53,7 +53,7 @@ def main():
             also=relations.select(same)
             #get comparison type, run choice function in compare
             #display results
-            print(f'{relations.choice([same,shap]).name} has a larger value in the selected field.')
+            print(f'{relations.choice([also,shap]).name} has a larger value in the selected field.')
         #elif sort 2d shapes:
         elif choic=='6':
             #run sort function on all 2d shapes
@@ -73,8 +73,19 @@ def main():
             #show results
             relations.view(relations.sort(same))
         #elif get formula explanations
+        elif choic=='8':
             #get type of shape
+            while True:
+                try:
+                    shp_typ=int(input('1. Circle\n2. Rectangle\n3. Triangle\n4. Cube\n5. Cylinder\n6. Tetrahedron\n'))
+                    if shp_typ not in [1,2,3,4,5,6]:
+                        int('hi')
+                    break
+                except:
+                    print('Invalid input. Try again.')
             #show appropriate formulas
+            forms=[two_d.Circ,two_d.Rect,two_d.Tri,tre_d.Cube,tre_d.Cyl,tre_d.Tetra]
+            forms[shp_typ-1].info()
         #else:
         else:
             #break out of loop

@@ -2,7 +2,7 @@
 import math
 
 #create class cube
-class cube:
+class Cube:
     #initialize, get side
     def __init__(self,name):
         #set volume, surface area, side, stretch, rotation, shifts, name
@@ -22,7 +22,7 @@ class cube:
     def __str__(self):
         #display cube attributes
         return f'''Name: {self.name}
-Type: {self.__class__.__name__}
+Type: Cube
 Side Length: {self.x}
 Volume: {self.volume}
 Surface Area: {self.surface}
@@ -40,7 +40,7 @@ Surface Area: {self.surface}
 
 
 #create class cylinder
-class cyl:
+class Cyl:
     #initialize, get h, radius
     def __init__(self,name):
         #set volume, surface area, top radius, height, stretch, rotation, shifts, name
@@ -59,7 +59,7 @@ class cyl:
             except:
                 print('Invalid input. Try again.')
         self.volume=self.height*(self.top**2)*3.14159
-        self.surface=(self.radius*2*3.14159*self.height)+(2*(self.radius**2)*3.14159)
+        self.surface=(self.top*2*3.14159*self.height)+(2*(self.top**2)*3.14159)
         self.name=name
         self.typ=3
 
@@ -67,7 +67,7 @@ class cyl:
     def __str__(self):
         #display cylinder attributes
         return f'''Name: {self.name}
-Type: {self.__class__.__name__}
+Type: Cylinder
 Top Radius: {self.top}
 Height: {self.height}
 Volume: {self.volume}
@@ -87,7 +87,7 @@ Surface Area: {self.surface}
 
 
 #create class tetrahedron
-class tetra:
+class Tetra:
     #initialize, get side
     def __init__(self,name):
         #set volume, surface area, side, stretch, rotation, shifts, name
@@ -107,7 +107,7 @@ class tetra:
     def __str__(self):
         #display d4 attributes
         return f'''Name: {self.name}
-Type: {self.__class__.__name__}
+Type: Tetrahedron
 Side Length: {self.side}
 Volume: {self.volume}
 Surface Area: {self.surface}

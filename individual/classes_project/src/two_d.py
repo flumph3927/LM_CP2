@@ -2,7 +2,7 @@
 import turtle, math
 
 #create class circ
-class circ:
+class Circ:
     #initialize, get radius and name
     def __init__(self,name):
         #set diameter, perimeter, radius, area, stretch, rotation, shifts and name
@@ -26,7 +26,7 @@ class circ:
     def __str__(self):
         #display all circle attributes
         return f'''Name: {self.name}
-Type: {self.__class__.__name__}
+Type: Circle
 Radius: {self.radius*self.stretch}
 Area: {self.area*self.stretch**2}
 Circumference: {self.perimeter*self.stretch}
@@ -40,22 +40,23 @@ Scale Factor of {self.stretch}
 
     #draw method
     def draw(self):
+        turtle.clear()
+        turtle.teleport(0,0)
+        turtle.seth(0)
         #imprt turtle
         #move to implement rotation and shifts
         turtle.teleport(self.shifts[0]*50, self.shifts[1]*50)
         turtle.lt(self.rotation)
         #draw circle with radius self radius and stretch
         turtle.circle(self.radius*50*self.stretch)
-        #hold turtle screen
-        turtle.done()
 
     #info method
     def info():
         #show formulas and explanation
-        print('The formula for a circle\'s area is πr**2, with r being the radius.\n The formula for a circle\'s perimeter, or circumference, is 2πr, with r being the radius.\nThe formula for the diameter of a circle is 2r, with r being the radius.')
+        print('The formula for a circle\'s area is πr**2, with r being the radius.\nThe formula for a circle\'s perimeter, or circumference, is 2πr, with r being the radius.\nThe formula for the diameter of a circle is 2r, with r being the radius.')
 
 #create class rect
-class rect:
+class Rect:
     #initialize, get x, y and name
     def __init__(self,name):
         #set perimeter, x, y, area, stretch, rotation, shifts and name
@@ -85,7 +86,7 @@ class rect:
     def __str__(self):
         #display all rect attributes
         return f'''Name: {self.name}
-Type: {self.__class__.__name__}
+Type: Rectangle
 Width: {self.x*self.stretch}
 Height: {self.y*self.stretch}
 Area: {self.area*self.stretch**2}
@@ -99,6 +100,9 @@ Scale Factor of {self.stretch}
 
     #draw method
     def draw(self):
+        turtle.clear()
+        turtle.teleport(0,0)
+        turtle.seth(0)
         #imprt turtle
         #move to implement rotation and shifts
         turtle.teleport(self.shifts[0]*50, self.shifts[1]*50)
@@ -109,8 +113,6 @@ Scale Factor of {self.stretch}
             turtle.lt(90)
             turtle.forward(self.y*50)
             turtle.lt(90)
-        #hold turtle screen
-        turtle.done()
 
     #info method
     def info():
@@ -119,31 +121,36 @@ Scale Factor of {self.stretch}
 
 
 #create class tri
-class tri:
+class Tri:
     #initialize, get b, h and name
     def __init__(self,name):
         #set perimeter, base, height, area, stretch, rotation, shifts and namewhile True:
         while True:
-            try:
-                self.a=float(input('Side A of the triangle: '))
-                if self.a>0:
-                    break
-            except:
-                print('Invalid input. Try again.')
-        while True:
-            try:
-                self.b=float(input('Side B of the triangle: '))
-                if self.b>0:
-                    break
-            except:
-                print('Invalid input. Try again.')
-        while True:
-            try:
-                self.c=float(input('Side C of the triangle: '))
-                if self.c>0:
-                    break
-            except:
-                print('Invalid input. Try again.')
+            while True:
+                try:
+                    self.a=float(input('Side A of the triangle: '))
+                    if self.a>0:
+                        break
+                except:
+                    print('Invalid input. Try again.')
+            while True:
+                try:
+                    self.b=float(input('Side B of the triangle: '))
+                    if self.b>0:
+                        break
+                except:
+                    print('Invalid input. Try again.')
+            while True:
+                try:
+                    self.c=float(input('Side C of the triangle: '))
+                    if self.c>0:
+                        break
+                except:
+                    print('Invalid input. Try again.')
+            if self.a+self.b>self.c and self.c+self.b>self.a and self.a+self.c>self.b:
+                break
+            else:
+                print('No possible triangle with those side lengths. Try again.')
         self.perimeter=self.a+self.b+self.c
         semi=self.perimeter/2
         self.area=math.sqrt(semi*(semi-self.a)*(semi-self.b)*(semi-self.c))
@@ -157,7 +164,7 @@ class tri:
     def __str__(self):
         #display all triangle attributes
         return f'''Name: {self.name}
-Type: {self.__class__.__name__}
+Type: Triangle
 Side A: {self.a*self.stretch}
 Side B: {self.b*self.stretch}
 Side C: {self.c*self.stretch}
@@ -172,19 +179,22 @@ Scale Factor of {self.stretch}
 
     #draw method
     def draw(self):
+        print('Because of how arccos works, this program cannot draw triangles.')
+        '''
+        turtle.clear()
+        turtle.teleport(0,0)
+        turtle.seth(0)
         #imprt turtle
         #move to implement rotation and shifts
         turtle.teleport(self.shifts[0]*50, self.shifts[1]*50)
         turtle.lt(self.rotation)
         #draw triangle with base base and height height and stretch
         turtle.forward(self.a*50)
-        turtle.lt(math.acos((self.a**2+self.b**2-self.c**2)/2*self.a*self.b))
+        turtle.lt(math.degrees(math.acos(((self.a**2)+(self.b**2)-(self.c**2))/(2*self.a*self.b))))
         turtle.forward(self.b*50)
-        turtle.lt(math.acos((self.c**2+self.b**2-self.a**2)/2*self.c*self.b))
+        turtle.lt(math.degrees(math.acos(((self.c**2)+(self.b**2)-(self.a**2))/(2*self.c*self.b))))
         turtle.forward(self.c*50)
-        turtle.lt(math.acos((self.a**2+self.c**2-self.b**2)/2*self.a*self.c))
-        #hold turtle screen
-        turtle.done()
+        turtle.lt(math.degrees(math.acos(((self.a**2)+(self.c**2)-(self.b**2))/(2*self.a*self.c))))'''
 
     #info method
     def info():

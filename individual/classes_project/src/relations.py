@@ -46,16 +46,16 @@ def sort(objects):
     try:
     #if opt is one, return objects reordered by area
         if opt==1:
-            return dict(sorted(objects,key=lambda s: s[1].area,reverse=True))
+            return dict(sorted(objects.items(),key=lambda s: s[1].area,reverse=True))
     #else, return objects reordered by perimeter
         else:
-            return dict(sorted(objects,key=lambda s: s[1].perimeter,reverse=True))
+            return dict(sorted(objects.items(),key=lambda s: s[1].perimeter,reverse=True))
     #for 3d:
     except:
         if opt==1:
-            return dict(sorted(objects,key=lambda s: s[1].volume,reverse=True))
+            return dict(sorted(objects.items(),key=lambda s: s[1].volume,reverse=True))
         else:
-            return dict(sorted(objects,key=lambda s: s[1].surface,reverse=True))
+            return dict(sorted(objects.items(),key=lambda s: s[1].surface,reverse=True))
 
 #create function select, get objects
 def select(objects):
@@ -71,4 +71,4 @@ def select(objects):
                 int('hi')
         except:
             print('Invalid Input. Try again.')
-    return list(objects.values())[choice-1]
+    return objects[list(objects.keys())[choice-1]]
