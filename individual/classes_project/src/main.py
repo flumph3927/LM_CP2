@@ -10,7 +10,7 @@ def main():
         choic=input('1. Create Shape\n2. View Shapes\n3. Draw Shape\n4. Transform Shape\n5. Compare Shape\n6. Sort 2d Shapes\n7. Sort 3d Shapes\n8. Get Formula Explanations\n9. Exit\n')
         while choic not in ['1','2','3','4','5','6','7','8','9']:
             print('Invalid Input. Try Again.')
-            choic=input('1. Create Shape\n2. View Shapes\n3. Transform Shape\n4. Compare Shape\n5. Sort 2d Shapes\n6. Sort 3d Shapes\n7. Get Formula Explanations\n8. Exit\n')
+            choic=input('1. Create Shape\n2. View Shapes\n3. Draw Shape\n4. Transform Shape\n5. Compare Shape\n6. Sort 2d Shapes\n7. Sort 3d Shapes\n8. Get Formula Explanations\n9. Exit\n')
         #if create shape:
         if choic=='1':
             #get name for shape(will replace)
@@ -40,7 +40,7 @@ def main():
             #run function transforms
             shap=relations.select(shapes)
             shape=transform.transforms(shap)
-            shapes[list(shap.keys())[0]]=shape
+            shapes[shap.name]=shape
         #elif compare shape:
         elif choic=='5':
             #run function select shape
@@ -72,6 +72,9 @@ def main():
                     same[i]=v
             #show results
             relations.view(relations.sort(same))
+        #elif get formula explanations
+            #get type of shape
+            #show appropriate formulas
         #else:
         else:
             #break out of loop

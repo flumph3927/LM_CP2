@@ -3,9 +3,9 @@
 #create function view shapes, get shapes
 def view(shapes):
     #loop through shapes
-    for i,v in enumerate(shapes):
+    for i,(k,v) in enumerate(shapes.items()):
     #display shapes with assosciated number
-        print(f'{i+1}: {v[1]}\n\n')
+        print(f'{i+1}: {v}\n\n')
 
 #create function choice, get opt and objedcts
 def choice(objects):
@@ -71,4 +71,4 @@ def select(objects):
                 int('hi')
         except:
             print('Invalid Input. Try again.')
-    return objects.values(choice-1)
+    return list(objects.values())[choice-1]
