@@ -1,7 +1,8 @@
 
 # Geometry Calculator
 ***
-![Image of code while running](location of image in folders)
+![Creating shape and information display](docs/running.png)
+
 A program for use creating select geometric shapes and finding their information. Can draw some shapes and make comparisons between them.
 
 ## Use Instructions
@@ -15,6 +16,7 @@ A program for use creating select geometric shapes and finding their information
 - Shape calculations
 - Shape comparisons and sorting
 - Both 2d and 3d shapes
+    - Circle, Rectangle, Triangle, Cube, Cylinder, and Tetrahedron
 - Limited shape drawing functionality
 - Very versatile triangles
 - Explanations for how to calculate the shape information
