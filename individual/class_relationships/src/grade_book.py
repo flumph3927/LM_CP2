@@ -28,15 +28,57 @@ class GradeBook:
         self.students[id]=student.Student(id)
 
     #create method add grade
+    def add_grade(self):
         #get valid grade, percent, and student id user inputs
+        while True:
+            id=input('Student\'s ID: ')
+            try: id=int(id)
+            except: print('Invalid input. Try again.')
+            if id in list(self.students.keys()):break
+            else:
+                print('Invalid input. Try again.')
+        name=input('Assignment Name(if not unique will replace): ')
+        grade=input('Grade: ')
+        while True:
+            try:
+                grade=int(grade)
+                if not grade>=0 or not grade<=100:
+                    int('hi')
+                break
+            except:
+                print('Invalid input. Try again.')
+                grade=input('Grade: ')
         #add to correct student's grades dict
+        self.students[id].grades[name]=grade
 
     #create method view records
+    def view_records(self):
         #get valid user input for student id
+        while True:
+            id=input('Student\'s ID: ')
+            try: id=int(id)
+            except: print('Invalid input. Try again.')
+            if id in list(self.students.keys()):break
+            else:
+                print('Invalid input. Try again.')
         #display that student's records and academic standing
+        print(self.students[id])
 
     #create method show stats
-        #loop through students
-            #use this to get avg grade, best grade, and worst grade
+    def show_stats(self):
+        grades=[]
+        for i in self.students:
+            if i.grades=={}:
+                grades.append('No grade')
+            else:
+                grades.append(sum(list(i.grades.values()))/len(i.grades))
+        #get avg grade
+        avg=sum(grades)/len(grades)
+        # get best grade
+        best=max(grades)
+        # get worst grade
+        worst=min(grades)
         #get number of students
+        num=len(self.students)
         #display information
+        print(f'Total students: {num}\nAverage grade: {avg}\nBest grade: {best}\nWorst grade: {worst}')
