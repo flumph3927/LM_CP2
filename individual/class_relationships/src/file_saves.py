@@ -15,9 +15,9 @@ def load(path):
     return stuff
 
 #create function amalgamate, get dict
-def amalgamate(dict):
+def amalgamate(dikt):
     #assemble dict into classes correctly
     students={}
-    for i in list(dict.values()):
-        students[list(i.keys())[0]]=student.student(list(i.keys())[0],i[list(i.keys())[0]][0],i[list(i.keys())[0]][0])
+    for i in dikt:
+        students[int(i)]=student.Student(i,dikt[i][0],dikt[i][1])
     return grade_book.GradeBook(students)

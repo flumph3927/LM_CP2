@@ -8,10 +8,10 @@ def main():
     #loop
     while True:
         #menu: add new student, add student grade, view student record, view all students, class statistics, exit
-        choice=input('1. Add new student\n2. Add student grade\n3. View student record\n4.View all students\n5. Class statistics\n6. Exit\n')
+        choice=input('1. Add new student\n2. Add student grade\n3. View student record\n4. View all students\n5. Class statistics\n6. Exit\n')
         while choice not in [str(x+1) for x in range(6)]:
             print('Invalid input. Try again.')
-            choice=input('1. Add new student\n2. Add student grade\n3. View student record\n4.View all students\n5. Class statistics\n6. Exit\n')
+            choice=input('1. Add new student\n2. Add student grade\n3. View student record\n4. View all students\n5. Class statistics\n6. Exit\n')
         #if add new student
         if choice=='1':
             #use BOOK add student method
@@ -34,6 +34,8 @@ def main():
             book.show_stats()
         #else
         else:
+            #save
+            file_saves.save(book,'individual/class_relationships/docs/students.json')
             #break ou of loop
             break
 

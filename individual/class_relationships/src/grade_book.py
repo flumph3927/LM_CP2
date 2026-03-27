@@ -12,27 +12,32 @@ class GradeBook:
     def __str__(self):
         out='ID    | Name     | Grade | Standing'
         #loop thourhg students
-        for i in self.students:
+        for i in list(self.students.values()):
             #call student method string
-            out+='\n'+i
+            out+='\n'+str(i)
         return out
 
     #create method add student
     def add_student(self,grades={}):
         #get student id until student id does not match any other student id
-        id=input('Student ID:')
         while True:
+            id=input('Student ID: ')
             try:
+                if len(id)!=5: int('hi')
                 id=int(id)
-                if id 
-        name=input('Studnet name: ')
+                if id in list(self.students.keys()): int('hi')
+                break
+            except:
+                print('Invalid input. Try again.')
+        name=input('Student name: ')
         #create student class from this, add to self students
         self.students[id]=student.Student(id,name,grades)
 
     def dictify(self):
         out={}
-        for i in list(self.students.values()):
-            out[i.id]=i.dictify()
+        for i in self.students:
+            out[i]=self.students[i].dictify()
+        return out
         
     #create method add grade
     def add_grade(self):
@@ -70,12 +75,12 @@ class GradeBook:
             else:
                 print('Invalid input. Try again.')
         #display that student's records and academic standing
-        print(self.students[id])
+        self.students[id].full()
 
     #create method show stats
     def show_stats(self):
         grades=[]
-        for i in self.students:
+        for i in list(self.students.values()):
             if i.grades=={}:
                 grades.append('No grade')
             else:
