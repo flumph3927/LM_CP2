@@ -18,15 +18,22 @@ class GradeBook:
         return out
 
     #create method add student
-    def add_student(self):
+    def add_student(self,grades={}):
         #get student id until student id does not match any other student id
         id=input('Student ID:')
-        while id in list(self.students.keys()) or len(id)!=5:
-            print('Invalid ID. Try Again. (tip: ID must be 5 digits and cannot already exist)')
-            id=input('Student ID:')
+        while True:
+            try:
+                id=int(id)
+                if id 
+        name=input('Studnet name: ')
         #create student class from this, add to self students
-        self.students[id]=student.Student(id)
+        self.students[id]=student.Student(id,name,grades)
 
+    def dictify(self):
+        out={}
+        for i in list(self.students.values()):
+            out[i.id]=i.dictify()
+        
     #create method add grade
     def add_grade(self):
         #get valid grade, percent, and student id user inputs
@@ -58,7 +65,8 @@ class GradeBook:
             id=input('Student\'s ID: ')
             try: id=int(id)
             except: print('Invalid input. Try again.')
-            if id in list(self.students.keys()):break
+            if id in list(self.students.keys()):
+                break
             else:
                 print('Invalid input. Try again.')
         #display that student's records and academic standing

@@ -4,13 +4,13 @@
 #create class Student
 class Student:
     #create method init, get student ID
-    def __init__(self,id):
+    def __init__(self,id,name,grades):
         #get user input for name 
-        self.name=input('The student\'s name: ')
+        self.name=name
         #set these to self vars
         self.id=id
         #set empty grade dict
-        self.grades={}
+        self.grades=grades
 
     #create method string
     def __str__(self):
