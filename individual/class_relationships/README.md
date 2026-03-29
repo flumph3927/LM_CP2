@@ -1,6 +1,7 @@
-# Project name
+# Class Relationships Project
 ***
-![Image of code while running](location of image in folders)
+![](docs\image.png)
+
 A class manager that allows you to manage student grades and see class summaries and statistics.
 
 ## How to use
