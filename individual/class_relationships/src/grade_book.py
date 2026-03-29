@@ -95,3 +95,16 @@ class GradeBook:
         num=len(self.students)
         #display information
         print(f'Total students: {num}\nAverage grade: {avg}\nBest grade: {best}\nWorst grade: {worst}')
+
+    def summarize(self):
+        print('Students:')
+        for i in self.students:
+            print(self.students[i].name)
+        grades=[]
+        for i in list(self.students.values()):
+            if i.grades=={}:
+                grades.append('No grade')
+            else:
+                grades.append(sum(list(i.grades.values()))/len(i.grades))
+        #get avg grade
+        print(f'Average grade: {sum(grades)/len(grades)}')
