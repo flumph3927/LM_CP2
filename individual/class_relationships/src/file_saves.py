@@ -19,5 +19,5 @@ def amalgamate(dikt):
     #assemble dict into classes correctly
     students={}
     for i in dikt:
-        students[int(i)]=student.Student(i,dikt[i][0],dikt[i][1])
+        students[int(i)]=student.Student(i,dikt[i][0],dikt[i][1],dikt[i][2])
     return grade_book.GradeBook(students)

@@ -4,13 +4,14 @@
 #create class Student
 class Student:
     #create method init, get student ID
-    def __init__(self,id,name,grades):
+    def __init__(self,id,name,grades,age):
         #get user input for name 
         self.name=name
         #set these to self vars
         self.id=id
         #set empty grade dict
         self.grades=grades
+        self.age=age
 
     #create method string
     def __str__(self):
@@ -27,12 +28,12 @@ class Student:
                 standing='Needs Improvement'
             grade=str(grade)+'%'
         #return student informations(no grade is possible)
-        return f'{self.id}: {self.name} | {grade} - {standing}'
+        return f'{self.id}: {self.name} | {self.age}th Grade | {grade} - {standing}'
 
     #create method dictify
     def dictify(self):
         #turn student information into dict, return this
-        return [self.name,self.grades]
+        return [self.name,self.grades,self.age]
     
     def full(self):
         if self.grades=={}:
@@ -47,6 +48,6 @@ class Student:
             else:
                 standing='Needs Improvement'
             grade=str(grade)+'%'
-        print(f'Name: {self.name}\nStudent ID: {self.id}\nOverall Grade: {grade}\nAcademic Standing: {standing}\nAssignments:')
+        print(f'Name: {self.name}\nStudent ID: {self.id}\n{self.age}th Grade\nOverall Grade: {grade}\nAcademic Standing: {standing}\nAssignments:')
         for i in self.grades:
             print(f'{i}: {self.grades[i]}')

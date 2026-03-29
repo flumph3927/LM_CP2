@@ -10,7 +10,7 @@ class GradeBook:
 
     #create method string
     def __str__(self):
-        out='ID    | Name     | Grade | Standing'
+        out='ID    | Name     |    Year    | Grade | Standing'
         #loop thourhg students
         for i in list(self.students.values()):
             #call student method string
