@@ -17,9 +17,13 @@ label.pack()
 root.count=0
 def add():
     root.count+=1
-    tkinter.Label(root,text=root.count).pack()
+    num['text']=root.count
+
 
 btn=tkinter.Button(root,text='MORE NUMBER',command=add)
 btn.pack()
+
+num=tkinter.Label(root,text='0')
+num.pack()
 
 root.mainloop()
