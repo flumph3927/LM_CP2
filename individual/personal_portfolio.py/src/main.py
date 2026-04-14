@@ -8,7 +8,8 @@ def main():
         try:
             runs.run(graphics.main_screen())
         except:
+            #if window closed, break loop
             break
 
-
+#call main
 main()

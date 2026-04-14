@@ -1,7 +1,8 @@
 
 # Personal Portfolio
 ***
-![Image of code while running](location of image in folders)
+![Image of code while running](docs/image.png)
+
 A project with a simple GUI that allows you to run other projects after viewing information about the project selected.
 
 ## Usage Indtructions
